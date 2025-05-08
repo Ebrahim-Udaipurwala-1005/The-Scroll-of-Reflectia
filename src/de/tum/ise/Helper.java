@@ -20,9 +20,7 @@ public class Helper {
         }
     }
 
-    private static boolean isMirrorChant(String s) {
-        int left = 0;
-        int right = s.length() - 1;
+    private static boolean isMirrorChant(String s, int left, int right) {
         while (left < right) {
             if (s.toLowerCase().charAt(left) != s.toLowerCase().charAt(right)) {
                 return false;
@@ -34,7 +32,7 @@ public class Helper {
     }
 
     private static String expandAroundCenter(String s, int left, int right) {
-        while (left >= 0 && right < s.length() && s.charAt(left) == s.charAt(right)) {
+        while (left >= 0 && right < s.length() && isMirrorChant(s, left, right)) {
             left--;
             right++;
         }
@@ -42,17 +40,17 @@ public class Helper {
     }
 
     public static void main(String[] args) {
-        System.out.println(isMirrorChant("a"));        // true - single character
-        System.out.println(isMirrorChant("aa"));       // true - two same characters
-        System.out.println(isMirrorChant("aba"));      // true - odd-length palindrome
-        System.out.println(isMirrorChant("abba"));     // true - even-length palindrome
-
-        System.out.println(isMirrorChant("ab"));       // false - different characters
-        System.out.println(isMirrorChant("abc"));      // false - not mirrored
-        System.out.println(isMirrorChant("abcdba"));   // false - mirrored ends but different middle
-
-        System.out.println(isMirrorChant(""));         // true - empty string is trivially a palindrome
-        System.out.println(isMirrorChant("racecar"));  // true - classic palindrome
-        System.out.println(isMirrorChant("hello"));    // false - not a palindrome
+//        System.out.println(isMirrorChant("a"));        // true - single character
+//        System.out.println(isMirrorChant("aa"));       // true - two same characters
+//        System.out.println(isMirrorChant("aba"));      // true - odd-length palindrome
+//        System.out.println(isMirrorChant("abba"));     // true - even-length palindrome
+//
+//        System.out.println(isMirrorChant("ab"));       // false - different characters
+//        System.out.println(isMirrorChant("abc"));      // false - not mirrored
+//        System.out.println(isMirrorChant("abcdba"));   // false - mirrored ends but different middle
+//
+//        System.out.println(isMirrorChant(""));         // true - empty string is trivially a palindrome
+//        System.out.println(isMirrorChant("racecar"));  // true - classic palindrome
+//        System.out.println(isMirrorChant("hello"));    // false - not a palindrome
     }
 }
